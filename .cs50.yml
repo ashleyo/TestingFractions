@@ -1,3 +1,4 @@
 lab50: true
-  - !include Fractions/Fraction.cs
+  files:
+    - !include Fractions/Fraction.cs
   
