@@ -1,0 +1,3 @@
+lab50: true
+  - !include Fractions/Fraction.cs
+  
