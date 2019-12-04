@@ -3,40 +3,36 @@ using FractionLib;
 using static FractionLib.Fraction;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
-
-namespace UnitTestProject1
+namespace Dm
 {
-    //ADDED static class to hold test data
     public static class TestData
     {
-        public static Tuple<Fraction, Fraction, Fraction>[] TestDataForMultiply = new Tuple<Fraction, Fraction, Fraction>[]
+        public static (Fraction,Fraction,Fraction)[] TestDataForMultiply = new (Fraction, Fraction, Fraction)[]
         {
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(1,2), Fraction.Create(1,2), Fraction.Create(1,4)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(-1,2), Fraction.Create(1,2), Fraction.Create(-1,4)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(3,7), Fraction.Create(9,8), Fraction.Create(27,56)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Unity, Fraction.Create(1,2), Fraction.Create(1,2)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Zero,Fraction.Create(1,2), Fraction.Zero),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(5,2),Fraction.Create(5,2), Fraction.Create(25,4))
+               (Fraction.Create(1,2), Fraction.Create(1,2), Fraction.Create(1,4)),
+               (Fraction.Create(-1,2), Fraction.Create(1,2), Fraction.Create(-1,4)),
+               (Fraction.Create(3,7), Fraction.Create(9,8), Fraction.Create(27,56)),
+               (Fraction.Unity, Fraction.Create(1,2), Fraction.Create(1,2)),
+               (Fraction.Zero,Fraction.Create(1,2), Fraction.Zero),
+               (Fraction.Create(5,2),Fraction.Create(5,2), Fraction.Create(25,4))
         };
-        public static Tuple<Fraction, Fraction, Fraction>[] TestDataForAdd = new Tuple<Fraction, Fraction, Fraction>[]
+        public static (Fraction, Fraction, Fraction)[] TestDataForAdd = new (Fraction, Fraction, Fraction)[]
         {
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(1,2), Fraction.Create(1,2), Fraction.Create(1)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(-1,2), Fraction.Create(1,2), Fraction.Zero),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(3,7), Fraction.Create(9,8), Fraction.Create(87,56)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Unity, Fraction.Create(1,2), Fraction.Create(3,2)),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Zero,Fraction.Create(0,2), Fraction.Zero),
-               Tuple.Create<Fraction,Fraction,Fraction>(Fraction.Create(-5,2),Fraction.Create(5,-2), Fraction.Create(-5))
+               (Fraction.Create(1,2), Fraction.Create(1,2), Fraction.Create(1)),
+               (Fraction.Create(-1,2), Fraction.Create(1,2), Fraction.Zero),
+               (Fraction.Create(3,7), Fraction.Create(9,8), Fraction.Create(87,56)),
+               (Fraction.Unity, Fraction.Create(1,2), Fraction.Create(3,2)),
+               (Fraction.Zero,Fraction.Create(0,2), Fraction.Zero),
+               (Fraction.Create(-5,2),Fraction.Create(5,-2), Fraction.Create(-5))
         };
-        public static Tuple<Fraction, Fraction, int>[] TestDataForComparison = new Tuple<Fraction, Fraction, int>[]
+        public static (Fraction, Fraction, int)[] TestDataForComparison = new (Fraction, Fraction, int)[]
         {
-            Tuple.Create<Fraction,Fraction,int>(Fraction.Create(5,4),Fraction.Create(5,4), 0),
-            Tuple.Create<Fraction,Fraction,int>(Fraction.Create(5,5),Fraction.Create(5,4), -1),
-            Tuple.Create<Fraction,Fraction,int>(Fraction.Create(5,5),Fraction.Create(5,6), 1)
+            (Fraction.Create(5,4),Fraction.Create(5,4), 0),
+            (Fraction.Create(5,5),Fraction.Create(5,4), -1),
+            (Fraction.Create(5,5),Fraction.Create(5,6), 1)
         };
     }
 
-    //ADDED more tests including example of how to use data-driven test
     [TestClass]
     public class UnitTest1
     {
@@ -95,7 +91,7 @@ namespace UnitTestProject1
             Fraction F = Fraction.Create(19, 37);
             Assert.AreEqual(F, Reciprocal(Reciprocal(F)));
         }
-        
+
 
         [TestMethod]
         public void TestMultiply()
