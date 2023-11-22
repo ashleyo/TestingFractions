@@ -116,7 +116,7 @@ namespace FractionLib
             => (this.numerator * rhs.denominator).CompareTo(this.denominator * rhs.numerator);
 
         //ADDED Equals and GetHashcode using compiler inserts
-        public override bool Equals(object obj) => obj is Fraction && Equals((Fraction)obj);
+        public override bool Equals(object? obj) => obj is Fraction && Equals((Fraction)obj);
         public bool Equals(Fraction other) => this.CompareTo(other) == 0;       
 
         public override int GetHashCode()
