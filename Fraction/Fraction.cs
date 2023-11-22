@@ -157,6 +157,7 @@ namespace FractionLib
         return Math.Abs(a);
         }
 
+        // not used by Fractions anymore but left in for completeness
         public static List<int> GetPrimeFactorExpansion(int n)
         {
             if (n <= 0) throw new ArgumentException();

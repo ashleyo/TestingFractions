@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// only used by GetPrimeFactorExpansion which itself is not used by Fraction any more
 
 namespace FractionLib
 {
