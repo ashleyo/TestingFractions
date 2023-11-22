@@ -77,7 +77,24 @@ namespace FractionLib
         public static Fraction Subtract(Fraction F, Fraction G) => Add(F, -G);
         public static Fraction operator -(Fraction F, Fraction G) => Subtract(F, G);
 
+
         public static Fraction Reduce(Fraction F)
+        {
+            int numerator = F.numerator;
+            int denominator = F.denominator;
+            int gcd = Utility.GCD(numerator, denominator);
+            numerator /= gcd;
+            denominator /= gcd;
+
+            if (denominator < 0)
+            {
+                numerator = -numerator;
+                denominator = -denominator;
+            }
+            return Fraction.Create(numerator, denominator);
+        }
+        /*
+        public static Fraction Reduce_old(Fraction F)
         {
             List<int> numexp = Utility.GetPrimeFactorExpansion(Math.Abs(F.numerator));
             List<int> denexp = Utility.GetPrimeFactorExpansion(F.denominator);
@@ -102,6 +119,7 @@ namespace FractionLib
 
             return Fraction.Create(Math.Sign(F.numerator)*newnum, newden);
         }
+        */
 
         public static bool operator ==(Fraction F, Fraction G) => F.CompareTo(G) == 0;
         public static bool operator !=(Fraction F, Fraction G) => !(F == G);
@@ -121,16 +139,24 @@ namespace FractionLib
 
         public override int GetHashCode()
         {
-            var hashCode = -671859081;
-            hashCode = hashCode * -1521134295 + base.GetHashCode();
-            hashCode = hashCode * -1521134295 + numerator.GetHashCode();
-            hashCode = hashCode * -1521134295 + denominator.GetHashCode();
-            return hashCode;
+            Fraction temp = Reduce(this);
+            return HashCode.Combine(temp.numerator, temp.denominator);
         }
     }
 
     public static class Utility
     {
+        public static int GCD(int a, int b)
+        {
+            while (b != 0)
+            {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+        return Math.Abs(a);
+        }
+
         public static List<int> GetPrimeFactorExpansion(int n)
         {
             if (n <= 0) throw new ArgumentException();
